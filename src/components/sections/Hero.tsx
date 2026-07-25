@@ -44,7 +44,7 @@ export default function Hero() {
     <section
       className="relative w-full overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #040c1a 0%, #061224 50%, #0a1a35 100%)',
+        background: '#000000',
         paddingTop: 0,
       }}
     >
