@@ -174,8 +174,12 @@ export default function Hero() {
                       <img
                         src={slide.imgSrc}
                         alt={slide.tagline}
-                        className="relative w-full h-auto object-contain drop-shadow-2xl"
-                        style={{ maxHeight: '420px' }}
+                        className="relative w-full h-auto object-contain"
+                        style={{
+                          maxHeight: '420px',
+                          mixBlendMode: 'lighten',
+                          filter: 'brightness(1.05) contrast(1.05)',
+                        }}
                       />
                     </div>
                   </motion.div>
