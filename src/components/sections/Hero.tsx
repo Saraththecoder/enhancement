@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -24,7 +24,7 @@ const slides = [
     tagline2: 'BUILT TO LAST.',
     highlight: '20+ YEARS.',
     sub: 'Trusted by 1000+ poultry farmers across 28 states. Experience the Sun Incubators difference.',
-    imgSrc: '/images/hero/hero-2.png',
+    imgSrc: '/images/hero/hero-1.png',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const slides = [
     tagline2: 'MINIMUM ENERGY.',
     highlight: 'INDIA-WIDE.',
     sub: 'Our machines are engineered for consistent performance, low operating costs, and long-term reliability.',
-    imgSrc: '/images/hero/hero-3.png',
+    imgSrc: '/images/hero/hero-1.png',
   },
 ];
 
@@ -41,22 +41,26 @@ export default function Hero() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ marginTop: 0 }}>
-      {/* Nav arrows */}
-      <button
-        ref={prevRef}
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft size={20} />
-      </button>
-      <button
-        ref={nextRef}
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
-        aria-label="Next slide"
-      >
-        <ChevronRight size={20} />
-      </button>
+    <section
+      className="relative w-full overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #040c1a 0%, #061224 50%, #0a1a35 100%)',
+        paddingTop: 0,
+      }}
+    >
+      {/* Tech dot pattern background */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.07]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, #4A9EFF 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+        }}
+      />
+      {/* Top blue glow */}
+      <div
+        className="absolute top-0 left-0 right-0 h-1 z-10"
+        style={{ background: '#1473E6' }}
+      />
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -72,69 +76,110 @@ export default function Hero() {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         loop
-        className="w-full hero-swiper"
+        className="w-full hero-swiper relative z-20"
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={slide.id}>
-            {/* Full-bleed background image */}
-            <div className="relative w-full min-h-[420px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[680px] flex items-center pt-[90px] md:pt-[96px]">
-              {/* Background image */}
-              <img
-                src={slide.imgSrc}
-                alt={slide.tagline}
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
+            <div
+              className="w-full flex items-center"
+              style={{ paddingTop: '96px', minHeight: '520px' }}
+            >
+              <div className="container-custom w-full">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 py-8 md:py-12">
 
-              {/* Dark gradient overlays for readability */}
-              {/* Left strong dark overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#02080F]/95 via-[#02080F]/70 to-transparent z-10" />
-              {/* Top fade for navbar blend */}
-              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#06111F] to-transparent z-10" />
-              {/* Bottom fade */}
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#02080F]/80 to-transparent z-10" />
-
-              {/* Text content overlaid on top */}
-              <div className="container-custom relative z-20 py-10 md:py-16">
-                <div className="max-w-xl lg:max-w-2xl">
+                  {/* ── LEFT: Text ── */}
                   <motion.div
                     key={`text-${slide.id}-${idx}`}
-                    initial={{ opacity: 0, y: 24 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex-1 max-w-lg text-left z-10"
                   >
                     <h1
-                      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 text-white tracking-tight"
-                      style={{ fontFamily: 'Outfit, sans-serif' }}
+                      className="font-black leading-[1.1] text-white mb-4"
+                      style={{
+                        fontFamily: 'Outfit, sans-serif',
+                        fontSize: 'clamp(1.75rem, 5vw, 3.25rem)',
+                      }}
                     >
                       {slide.tagline}
                       <br />
                       {slide.tagline2}
                       <br />
-                      <span className="text-[#1473E6]">{slide.highlight}</span>
+                      <span style={{ color: '#1473E6' }}>{slide.highlight}</span>
                     </h1>
 
-                    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-8 text-slate-300 max-w-md font-normal">
+                    <p
+                      className="mb-8 leading-relaxed"
+                      style={{
+                        color: 'rgba(255,255,255,0.80)',
+                        fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                        maxWidth: '420px',
+                      }}
+                    >
                       {slide.sub}
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         to="/products"
-                        className="flex items-center justify-between gap-3 bg-[#1473E6] hover:bg-blue-500 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider shadow-[0_4px_20px_rgba(20,115,230,0.45)] hover:-translate-y-0.5"
+                        className="flex items-center justify-between gap-3 font-bold tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5"
+                        style={{
+                          background: '#1473E6',
+                          color: '#fff',
+                          padding: '13px 24px',
+                          fontSize: '0.75rem',
+                          boxShadow: '0 4px 20px rgba(20,115,230,0.45)',
+                        }}
                       >
                         <span>EXPLORE PRODUCTS</span>
-                        <ArrowRight size={16} />
+                        <ArrowRight size={15} />
                       </Link>
 
                       <Link
                         to="/contact"
-                        className="flex items-center justify-between gap-3 bg-white/10 backdrop-blur-sm border border-white/25 hover:border-white/50 hover:bg-white/15 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider"
+                        className="flex items-center justify-between gap-3 font-bold tracking-wider rounded-lg transition-all duration-300 hover:bg-white/10"
+                        style={{
+                          background: 'transparent',
+                          color: '#fff',
+                          border: '1.5px solid rgba(255,255,255,0.30)',
+                          padding: '13px 24px',
+                          fontSize: '0.75rem',
+                        }}
                       >
                         <span>CONTACT US</span>
-                        <ArrowRight size={16} />
+                        <ArrowRight size={15} />
                       </Link>
                     </div>
                   </motion.div>
+
+                  {/* ── RIGHT: Image ── */}
+                  <motion.div
+                    key={`img-${slide.id}-${idx}`}
+                    initial={{ opacity: 0, x: 40, scale: 0.96 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    className="flex-1 flex items-center justify-center md:justify-end z-10 w-full"
+                    style={{ maxWidth: '520px' }}
+                  >
+                    {/* Radial glow behind image */}
+                    <div className="relative w-full">
+                      <div
+                        className="absolute inset-0 rounded-3xl pointer-events-none"
+                        style={{
+                          background: 'radial-gradient(ellipse at center, rgba(20,115,230,0.18) 0%, transparent 70%)',
+                          transform: 'scale(1.15)',
+                        }}
+                      />
+                      <img
+                        src={slide.imgSrc}
+                        alt={slide.tagline}
+                        className="relative w-full h-auto object-contain drop-shadow-2xl"
+                        style={{ maxHeight: '420px' }}
+                      />
+                    </div>
+                  </motion.div>
+
                 </div>
               </div>
             </div>
