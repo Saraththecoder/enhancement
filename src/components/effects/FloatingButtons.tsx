@@ -14,7 +14,7 @@ export default function FloatingButtons() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <div className="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3 md:bottom-8 md:right-8">
+    <div className="fixed bottom-20 right-4 z-[750] flex flex-col items-end gap-2.5 md:bottom-8 md:right-8">
       {/* WhatsApp */}
       <motion.a
         href="https://wa.me/919440551559"
@@ -42,7 +42,7 @@ export default function FloatingButtons() {
         transition={{ delay: 0.7, type: 'spring', stiffness: 200 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 bg-primary text-white px-3 py-3 md:px-4 rounded-full shadow-lg shadow-primary/30 group"
+        className="flex items-center gap-2 bg-[#1473E6] text-white px-3 py-3 md:px-4 rounded-full shadow-lg shadow-[#1473E6]/30 group"
         title="Call Us"
       >
         <Phone size={20} className="shrink-0" />
@@ -61,7 +61,7 @@ export default function FloatingButtons() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="p-3 bg-navy text-white border border-primary/30 rounded-full shadow-lg hover:bg-primary transition-colors duration-300"
+            className="p-3 bg-[#06111F] text-white border border-[#1473E6]/40 rounded-full shadow-lg hover:bg-[#1473E6] transition-colors duration-300"
             title="Back to top"
           >
             <ArrowUp size={18} />
