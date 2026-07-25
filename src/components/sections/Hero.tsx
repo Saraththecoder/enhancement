@@ -24,7 +24,7 @@ const slides = [
     tagline2: 'BUILT TO LAST.',
     highlight: '20+ YEARS.',
     sub: 'Trusted by 1000+ poultry farmers across 28 states. Experience the Sun Incubators difference.',
-    imgSrc: '/images/products/commercial-egg-incubator.png',
+    imgSrc: '/images/hero/hero-2.png',
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const slides = [
     tagline2: 'MINIMUM ENERGY.',
     highlight: 'INDIA-WIDE.',
     sub: 'Our machines are engineered for consistent performance, low operating costs, and long-term reliability.',
-    imgSrc: '/images/products/combined-setter-hatcher.png',
+    imgSrc: '/images/hero/hero-3.png',
   },
 ];
 
@@ -41,34 +41,18 @@ export default function Hero() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className="relative w-full bg-[#06111F] overflow-hidden pt-[100px] md:pt-[100px] pb-8 md:pb-12 border-b border-primary/10">
-      {/* Background radial glow */}
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle at 50% 30%, #1473E6 0%, transparent 70%)`,
-        }}
-      />
-      {/* Subtle industrial grid pattern */}
-      <div
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle, #1473E6 1px, transparent 1px)`,
-          backgroundSize: '36px 36px',
-        }}
-      />
-
-      {/* Nav arrows for desktop */}
+    <section className="relative w-full overflow-hidden" style={{ marginTop: 0 }}>
+      {/* Nav arrows */}
       <button
         ref={prevRef}
-        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         ref={nextRef}
-        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
         aria-label="Next slide"
       >
         <ChevronRight size={20} />
@@ -88,71 +72,71 @@ export default function Hero() {
         effect="fade"
         fadeEffect={{ crossFade: true }}
         loop
-        className="w-full relative z-20 hero-swiper"
+        className="w-full hero-swiper"
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={slide.id}>
-            <div className="container-custom flex flex-col lg:flex-row items-center justify-between gap-8 py-6 md:py-12 relative z-20">
-              {/* Text column */}
-              <div className="flex-1 max-w-xl text-left">
-                <motion.div
-                  key={`text-${slide.id}-${idx}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <h1
-                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 text-white tracking-tight"
-                    style={{ fontFamily: 'Outfit, sans-serif' }}
+            {/* Full-bleed background image */}
+            <div className="relative w-full min-h-[420px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[680px] flex items-center pt-[90px] md:pt-[96px]">
+              {/* Background image */}
+              <img
+                src={slide.imgSrc}
+                alt={slide.tagline}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              {/* Dark gradient overlays for readability */}
+              {/* Left strong dark overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#02080F]/95 via-[#02080F]/70 to-transparent z-10" />
+              {/* Top fade for navbar blend */}
+              <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#06111F] to-transparent z-10" />
+              {/* Bottom fade */}
+              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#02080F]/80 to-transparent z-10" />
+
+              {/* Text content overlaid on top */}
+              <div className="container-custom relative z-20 py-10 md:py-16">
+                <div className="max-w-xl lg:max-w-2xl">
+                  <motion.div
+                    key={`text-${slide.id}-${idx}`}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    {slide.tagline}
-                    <br />
-                    {slide.tagline2}
-                    <br />
-                    <span className="text-[#1473E6]">{slide.highlight}</span>
-                  </h1>
-
-                  <p className="text-sm sm:text-base md:text-lg font-normal leading-relaxed mb-8 text-slate-300 max-w-md">
-                    {slide.sub}
-                  </p>
-
-                  {/* Buttons matching screenshot */}
-                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <Link
-                      to="/products"
-                      className="flex items-center justify-between gap-3 bg-[#1473E6] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider shadow-[0_4px_20px_rgba(20,115,230,0.4)] hover:shadow-xl hover:-translate-y-0.5"
+                    <h1
+                      className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 text-white tracking-tight"
+                      style={{ fontFamily: 'Outfit, sans-serif' }}
                     >
-                      <span>EXPLORE PRODUCTS</span>
-                      <ArrowRight size={16} />
-                    </Link>
+                      {slide.tagline}
+                      <br />
+                      {slide.tagline2}
+                      <br />
+                      <span className="text-[#1473E6]">{slide.highlight}</span>
+                    </h1>
 
-                    <Link
-                      to="/contact"
-                      className="flex items-center justify-between gap-3 bg-transparent border border-white/20 hover:border-[#1473E6] hover:bg-white/5 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider"
-                    >
-                      <span>CONTACT US</span>
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </motion.div>
-              </div>
+                    <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-8 text-slate-300 max-w-md font-normal">
+                      {slide.sub}
+                    </p>
 
-              {/* Image column */}
-              <motion.div
-                key={`img-${slide.id}-${idx}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-                className="flex-1 max-w-md lg:max-w-xl w-full flex items-center justify-center"
-              >
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-b from-blue-900/20 to-navy-dark/80 border border-primary/20 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-                  <img
-                    src={slide.imgSrc}
-                    alt={slide.tagline}
-                    className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
-                  />
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        to="/products"
+                        className="flex items-center justify-between gap-3 bg-[#1473E6] hover:bg-blue-500 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider shadow-[0_4px_20px_rgba(20,115,230,0.45)] hover:-translate-y-0.5"
+                      >
+                        <span>EXPLORE PRODUCTS</span>
+                        <ArrowRight size={16} />
+                      </Link>
+
+                      <Link
+                        to="/contact"
+                        className="flex items-center justify-between gap-3 bg-white/10 backdrop-blur-sm border border-white/25 hover:border-white/50 hover:bg-white/15 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider"
+                      >
+                        <span>CONTACT US</span>
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
+                  </motion.div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </SwiperSlide>
         ))}
