@@ -96,7 +96,7 @@ export default function Hero() {
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={slide.id}>
-            <div className="w-full flex items-center min-h-[360px] sm:min-h-[460px] md:min-h-[560px] pt-[76px] sm:pt-[96px]">
+            <div className="w-full flex items-center min-h-[360px] sm:min-h-[460px] md:min-h-[560px] pt-[120px] sm:pt-[130px] md:pt-[96px]">
               <div className="container-custom w-full">
                 <div className="flex flex-row items-center justify-between gap-4 md:gap-10 py-6 md:py-12">
 
