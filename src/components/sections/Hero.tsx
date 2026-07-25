@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import ImagePlaceholder from '../ui/ImagePlaceholder';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -13,27 +12,27 @@ import 'swiper/css/effect-fade';
 const slides = [
   {
     id: 1,
-    tagline: 'ENGINEERING TRUST. DELIVERING PERFORMANCE.',
+    tagline: 'ENGINEERING TRUST.',
+    tagline2: 'DELIVERING PERFORMANCE.',
     highlight: 'SINCE 2004.',
     sub: 'Designing and manufacturing premium commercial egg incubation systems for poultry farms across India.',
-    imgLabel: 'Hero — Commercial Incubator from @sunincubators',
-    imgSrc: '/images/hero/hero-1.jpg',
+    imgSrc: '/images/hero/hero-1.png',
   },
   {
     id: 2,
-    tagline: 'PRECISION ENGINEERED. BUILT TO LAST.',
+    tagline: 'PRECISION ENGINEERED.',
+    tagline2: 'BUILT TO LAST.',
     highlight: '20+ YEARS.',
     sub: 'Trusted by 1000+ poultry farmers across 28 states. Experience the Sun Incubators difference.',
-    imgLabel: 'Hero — Hatcher Machine from @sunincubators',
-    imgSrc: '/images/hero/hero-2.jpg',
+    imgSrc: '/images/products/commercial-egg-incubator.png',
   },
   {
     id: 3,
-    tagline: 'MAXIMUM HATCHABILITY. MINIMUM ENERGY.',
+    tagline: 'MAXIMUM HATCHABILITY.',
+    tagline2: 'MINIMUM ENERGY.',
     highlight: 'INDIA-WIDE.',
     sub: 'Our machines are engineered for consistent performance, low operating costs, and long-term reliability.',
-    imgLabel: 'Hero — Installation from @sunincubators',
-    imgSrc: '/images/hero/hero-3.jpg',
+    imgSrc: '/images/products/combined-setter-hatcher.png',
   },
 ];
 
@@ -42,29 +41,34 @@ export default function Hero() {
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <section className="relative w-full min-h-screen bg-hero-gradient overflow-hidden pt-[110px] md:pt-[90px]">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none"
+    <section className="relative w-full bg-[#06111F] overflow-hidden pt-[100px] md:pt-[100px] pb-8 md:pb-12 border-b border-primary/10">
+      {/* Background radial glow */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(circle, #0B6FF5 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
+          backgroundImage: `radial-gradient(circle at 50% 30%, #1473E6 0%, transparent 70%)`,
         }}
       />
-      {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent z-10 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-navy to-transparent z-10 pointer-events-none" />
+      {/* Subtle industrial grid pattern */}
+      <div
+        className="absolute inset-0 opacity-5 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, #1473E6 1px, transparent 1px)`,
+          backgroundSize: '36px 36px',
+        }}
+      />
 
-      {/* Nav arrows */}
+      {/* Nav arrows for desktop */}
       <button
         ref={prevRef}
-        className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full glass flex items-center justify-center text-white hover:bg-primary/50 transition-all duration-200"
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         ref={nextRef}
-        className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 md:w-12 md:h-12 rounded-full glass flex items-center justify-center text-white hover:bg-primary/50 transition-all duration-200"
+        className="hidden md:flex absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
         aria-label="Next slide"
       >
         <ChevronRight size={20} />
@@ -80,46 +84,51 @@ export default function Hero() {
           swiper.params.navigation.nextEl = nextRef.current;
         }}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
         effect="fade"
         fadeEffect={{ crossFade: true }}
         loop
-        className="w-full h-full relative z-20"
+        className="w-full relative z-20 hero-swiper"
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={slide.id}>
-            <div className="container-custom flex flex-col md:flex-row items-center justify-between gap-8 min-h-[calc(100vh-110px)] md:min-h-[calc(100vh-90px)] py-10 md:py-16 relative z-20">
-              {/* Text */}
-              <div className="flex-1 max-w-xl">
+            <div className="container-custom flex flex-col lg:flex-row items-center justify-between gap-8 py-6 md:py-12 relative z-20">
+              {/* Text column */}
+              <div className="flex-1 max-w-xl text-left">
                 <motion.div
                   key={`text-${slide.id}-${idx}`}
-                  initial={{ opacity: 0, x: -40 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
                 >
                   <h1
-                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4 text-white"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 text-white tracking-tight"
                     style={{ fontFamily: 'Outfit, sans-serif' }}
                   >
                     {slide.tagline}
                     <br />
+                    {slide.tagline2}
+                    <br />
                     <span className="text-[#1473E6]">{slide.highlight}</span>
                   </h1>
 
-                  <p className="text-base md:text-lg font-medium leading-relaxed mb-8 max-w-md text-white/90">
+                  <p className="text-sm sm:text-base md:text-lg font-normal leading-relaxed mb-8 text-slate-300 max-w-md">
                     {slide.sub}
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-2">
+                  {/* Buttons matching screenshot */}
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <Link
                       to="/products"
-                      className="flex items-center justify-between gap-2 bg-[#1473E6] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 text-sm tracking-wide shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                      className="flex items-center justify-between gap-3 bg-[#1473E6] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider shadow-[0_4px_20px_rgba(20,115,230,0.4)] hover:shadow-xl hover:-translate-y-0.5"
                     >
                       <span>EXPLORE PRODUCTS</span>
                       <ArrowRight size={16} />
                     </Link>
+
                     <Link
                       to="/contact"
-                      className="flex items-center justify-between gap-2 border border-white/20 hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 text-sm tracking-wide"
+                      className="flex items-center justify-between gap-3 bg-transparent border border-white/20 hover:border-[#1473E6] hover:bg-white/5 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-300 text-xs sm:text-sm tracking-wider"
                     >
                       <span>CONTACT US</span>
                       <ArrowRight size={16} />
@@ -128,24 +137,19 @@ export default function Hero() {
                 </motion.div>
               </div>
 
-              {/* Image */}
+              {/* Image column */}
               <motion.div
                 key={`img-${slide.id}-${idx}`}
-                initial={{ opacity: 0, scale: 0.9, x: 40 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="flex-1 max-w-sm md:max-w-xl lg:max-w-2xl w-full"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="flex-1 max-w-md lg:max-w-xl w-full flex items-center justify-center"
               >
-                <div className="relative">
-                  {/* Glow behind image */}
-                  <div className="absolute inset-0 bg-primary/20 rounded-3xl blur-3xl scale-90 pointer-events-none" />
-                  <ImagePlaceholder
-                    label={slide.imgLabel}
+                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-b from-blue-900/20 to-navy-dark/80 border border-primary/20 p-2 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                  <img
                     src={slide.imgSrc}
                     alt={slide.tagline}
-                    aspectRatio="aspect-[4/3]"
-                    dark
-                    className="rounded-2xl md:rounded-3xl border border-primary/20 relative z-10"
+                    className="w-full h-full object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
                   />
                 </div>
               </motion.div>

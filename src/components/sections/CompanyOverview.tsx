@@ -1,149 +1,122 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Calendar, Globe, ShieldCheck, ThumbsUp, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, UserCheck, ShieldCheck, ThumbsUp, ArrowRight } from 'lucide-react';
 
 const features = [
-  { icon: <Calendar size={20} />, title: 'SINCE 2004', sub: 'Manufacturing Experience' },
-  { icon: <Globe size={20} />, title: 'INDIA WIDE', sub: 'Trusted by Poultry Farmers' },
-  { icon: <ShieldCheck size={20} />, title: 'QUALITY ASSURED', sub: 'Precision Engineered' },
-  { icon: <ThumbsUp size={20} />, title: 'CUSTOMER FOCUSED', sub: 'Your Success is Our Mission' },
-];
-
-const coreValues = [
-  'Engineering Excellence',
-  'Transparency & Integrity',
-  'Premium Quality',
-  'Reliability',
-  'Customer Success',
-  'Continuous Improvement',
-  'Innovation',
+  {
+    icon: Calendar,
+    title: 'SINCE 2004',
+    sub: 'Manufacturing Experience',
+  },
+  {
+    icon: UserCheck,
+    title: 'INDIA WIDE',
+    sub: 'Trusted by Poultry Farmers',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'QUALITY ASSURED',
+    sub: 'Precision Engineered',
+  },
+  {
+    icon: ThumbsUp,
+    title: 'CUSTOMER FOCUSED',
+    sub: 'Your Success is Our Mission',
+  },
 ];
 
 export default function CompanyOverview() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className="bg-white py-16 lg:py-24">
+    <section ref={ref} className="bg-slate-50 py-8 sm:py-12 md:py-16">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
-          {/* Left — Company intro */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="text-[#1473E6] text-xs font-bold uppercase tracking-wider">COMPANY OVERVIEW</span>
-            <h2 className="text-3xl md:text-4xl font-black text-navy mt-1 mb-1 leading-tight" style={{ fontFamily: 'Outfit, sans-serif' }}>
+        {/* Main Card Container matching reference mobile screenshot */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-[0_10px_40px_rgba(0,0,0,0.06)] border border-slate-100 relative overflow-hidden"
+        >
+          {/* Top-Right Factory Blueprint Line Art SVG */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 opacity-30 sm:opacity-40 pointer-events-none w-20 h-20 sm:w-28 sm:h-28 text-[#1473E6]">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M10 85 h80 V50 L65 35 V20 h-15 v25 L35 35 V25 h-15 v25 L10 60 Z" />
+              <path d="M25 60 h10 v25 H25 Z" />
+              <path d="M45 60 h10 v25 H45 Z" />
+              <circle cx="75" cy="25" r="10" strokeDasharray="3 3" />
+              <path d="M75 18 v14 M68 25 h14" />
+            </svg>
+          </div>
+
+          <div className="max-w-3xl relative z-10">
+            {/* Header badges */}
+            <span
+              className="text-[#1473E6] text-xs sm:text-sm font-bold uppercase tracking-wider block mb-1"
+              style={{ fontFamily: 'Outfit, sans-serif' }}
+            >
+              COMPANY OVERVIEW
+            </span>
+
+            <h2
+              className="text-2xl sm:text-3xl md:text-4xl font-black text-[#06111F] tracking-tight leading-tight mb-1"
+              style={{ fontFamily: 'Outfit, sans-serif' }}
+            >
               SUN ENGINEERING WORKS
             </h2>
-            <p className="text-[#1473E6] font-bold text-base mb-4">Brand: Sun Incubators</p>
 
-            <p className="text-slate-500 text-sm leading-relaxed mb-8">
+            <p className="text-[#1473E6] font-bold text-sm sm:text-base mb-4">
+              Brand: Sun Incubators
+            </p>
+
+            <p className="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed mb-8 max-w-2xl font-normal">
               Sun Incubators is committed to building reliable, precision-engineered incubation systems that help poultry businesses achieve higher productivity, better hatchability, and long-term success.
             </p>
 
-            {/* Feature icons grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {features.map((f, i) => (
-                <motion.div
-                  key={f.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-[#1473E6]/10 flex items-center justify-center text-[#1473E6] shrink-0">
-                    {f.icon}
-                  </div>
-                  <div>
-                    <div className="text-navy font-bold text-sm tracking-wide uppercase">{f.title}</div>
-                    <div className="text-slate-500 text-xs mt-0.5">{f.sub}</div>
-                  </div>
-                </motion.div>
-              ))}
+            {/* 2x2 Feature Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+              {features.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ delay: 0.15 + idx * 0.08, duration: 0.4 }}
+                    className="flex items-center gap-3 bg-slate-50/70 p-3 sm:p-4 rounded-2xl border border-slate-100"
+                  >
+                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#1473E6]/10 flex items-center justify-center text-[#1473E6] shrink-0">
+                      <Icon size={20} className="stroke-[2]" />
+                    </div>
+                    <div>
+                      <h4
+                        className="text-[#06111F] font-bold text-xs sm:text-sm tracking-wide uppercase"
+                        style={{ fontFamily: 'Outfit, sans-serif' }}
+                      >
+                        {item.title}
+                      </h4>
+                      <p className="text-slate-500 text-[11px] sm:text-xs mt-0.5 leading-snug">
+                        {item.sub}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            <div className="text-center mt-2 mb-4 lg:mb-0 lg:text-left">
+            {/* View More Link */}
+            <div className="pt-2">
               <Link
                 to="/about"
-                className="inline-flex items-center justify-center gap-2 text-[#1473E6] font-bold text-sm uppercase tracking-wide hover:gap-3 transition-all duration-200"
+                className="inline-flex items-center gap-2 text-[#1473E6] font-extrabold text-xs sm:text-sm uppercase tracking-wider hover:gap-3 transition-all duration-200"
               >
-                VIEW MORE ABOUT US <ArrowRight size={14} />
+                <span>VIEW MORE ABOUT US</span>
+                <ArrowRight size={16} />
               </Link>
             </div>
-          </motion.div>
-
-          {/* Center — Vision */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2, duration: 0.7 }}
-            className="lg:border-x lg:border-slate-100 lg:px-10"
-          >
-            <div className="mb-8">
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 bg-[#1473E6]/10 rounded-lg flex items-center justify-center">
-                  <span className="text-[#1473E6] text-sm">👁</span>
-                </div>
-                <h3 className="text-navy font-black text-lg" style={{ fontFamily: 'Outfit, sans-serif' }}>OUR VISION</h3>
-              </div>
-              <p className="text-slate-500 text-sm leading-relaxed">
-                To become India's most trusted and technologically advanced poultry incubation brand by delivering world-class incubation solutions that maximize hatchability, reliability, and profitability.
-              </p>
-            </div>
-
-            {/* Core Values */}
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-8 h-8 bg-[#1473E6]/10 rounded-lg flex items-center justify-center">
-                  <span className="text-[#1473E6] text-sm">💎</span>
-                </div>
-                <h3 className="text-navy font-black text-lg" style={{ fontFamily: 'Outfit, sans-serif' }}>CORE VALUES</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {coreValues.map((v) => (
-                  <div key={v} className="flex items-center gap-2 text-sm text-slate-600">
-                    <CheckCircle2 size={14} className="text-[#1473E6] shrink-0" />
-                    {v}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right — Mission */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.3, duration: 0.7 }}
-          >
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 bg-[#1473E6]/10 rounded-lg flex items-center justify-center">
-                <span className="text-[#1473E6] text-sm">🎯</span>
-              </div>
-              <h3 className="text-navy font-black text-lg" style={{ fontFamily: 'Outfit, sans-serif' }}>OUR MISSION</h3>
-            </div>
-            <p className="text-slate-500 text-sm leading-relaxed mb-6">
-              To empower poultry farmers and hatcheries with precision-engineered incubators built for consistent performance, energy efficiency, and long-term durability. We combine innovation, craftsmanship, and customer support to help our clients achieve outstanding results.
-            </p>
-
-            {/* Visual stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: '20+', label: 'Years Experience' },
-                { num: '1000+', label: 'Happy Customers' },
-                { num: '5000+', label: 'Machines Installed' },
-                { num: '28+', label: 'States Served' },
-              ].map(s => (
-                <div key={s.label} className="bg-slate-50 rounded-xl p-4 text-center border border-slate-100">
-                  <div className="text-2xl font-black text-[#1473E6]" style={{ fontFamily: 'Outfit, sans-serif' }}>{s.num}</div>
-                  <div className="text-xs text-slate-500 font-medium mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

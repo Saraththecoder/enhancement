@@ -7,6 +7,7 @@ import ScrollProgress from './components/effects/ScrollProgress';
 import FloatingButtons from './components/effects/FloatingButtons';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import MobileBottomNav from './components/layout/MobileBottomNav';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -50,21 +51,24 @@ function AppContent() {
     <>
       <ScrollToTop />
       <Navbar />
-      <PageTransition>
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/spare-parts" element={<SparePartsPage />} />
-          <Route path="/gallery" element={<GalleryPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
-          <Route path="/quote" element={<QuotePage />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </PageTransition>
+      <div className="pb-14 md:pb-0">
+        <PageTransition>
+          <Routes location={location}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/spare-parts" element={<SparePartsPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
+            <Route path="/quote" element={<QuotePage />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </PageTransition>
+      </div>
       <Footer />
+      <MobileBottomNav />
     </>
   );
 }
