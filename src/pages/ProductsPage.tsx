@@ -80,7 +80,7 @@ export default function ProductsPage() {
                   </div>
                   <Link
                     to="/quote"
-                    className="inline-flex items-center gap-2 bg-primary hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all duration-200 hover:shadow-[0_0_15px_rgba(11,111,245,0.4)]"
+                    className="inline-flex items-center gap-2 bg-[#1473E6] hover:bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
                   >
                     Get a Quote <ArrowRight size={13} />
                   </Link>
@@ -97,7 +97,7 @@ export default function ProductsPage() {
             <p className="text-white/60 text-sm mb-5">We stock genuine replacement parts for all Sun Incubator models. Fast delivery across India.</p>
             <Link
               to="/spare-parts"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-blue-600 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 hover:shadow-[0_0_20px_rgba(11,111,245,0.5)] text-sm"
+              className="inline-flex items-center gap-2 bg-[#1473E6] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 text-sm"
             >
               View Genuine Spare Parts <ArrowRight size={15} />
             </Link>

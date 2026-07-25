@@ -37,7 +37,7 @@ export default function GetQuote() {
     setTimeout(() => setSubmitted(false), 4000);
   };
 
-  const inputClass = "w-full bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-primary focus:bg-white/15 transition-all duration-200";
+  const inputClass = "w-full bg-white/10 border border-white/20 text-white placeholder-white/40 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-white/50 focus:ring-1 focus:ring-white/50 focus:bg-white/15 transition-all duration-200";
   const labelClass = "text-white/70 text-xs font-semibold mb-1 block";
 
   return (
@@ -124,7 +124,7 @@ export default function GetQuote() {
                 <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
-                    className="flex-1 flex items-center justify-center gap-2 bg-white text-primary font-black py-3.5 rounded-xl hover:bg-white/95 transition-all duration-200 text-sm tracking-wide"
+                    className="flex-1 flex items-center justify-center gap-2 bg-white text-[#1473E6] font-black py-3.5 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm tracking-wide"
                   >
                     <Send size={16} /> REQUEST QUOTE
                   </button>
@@ -132,13 +132,13 @@ export default function GetQuote() {
                     href="https://wa.me/919440551559?text=Hi, I'd like to get a quote for Sun Incubators products."
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-black py-3.5 rounded-xl hover:opacity-90 transition-all duration-200 text-sm tracking-wide"
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-black py-3.5 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm tracking-wide"
                   >
                     <MessageCircle size={16} /> WHATSAPP
                   </a>
                   <a
                     href="tel:+919440551559"
-                    className="flex items-center justify-center gap-2 bg-white/10 border border-white/30 text-white font-bold py-3.5 px-6 rounded-xl hover:bg-white/20 transition-all duration-200 text-sm"
+                    className="flex items-center justify-center gap-2 bg-white/10 border border-white/30 text-white font-bold py-3.5 px-6 rounded-lg hover:bg-white/20 transition-all duration-300 text-sm"
                   >
                     <Phone size={16} /> CALL NOW
                   </a>

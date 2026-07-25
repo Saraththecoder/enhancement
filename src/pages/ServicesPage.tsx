@@ -102,7 +102,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
         <Link
           to="/quote"
-          className="inline-flex items-center gap-2 bg-primary hover:bg-blue-700 text-white text-xs font-bold px-5 py-2.5 rounded-lg transition-all duration-200 hover:shadow-[0_0_15px_rgba(11,111,245,0.4)]"
+          className="inline-flex items-center gap-2 bg-[#1473E6] hover:bg-blue-600 text-white text-xs font-bold px-5 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
         >
           Send Inquiry →
         </Link>

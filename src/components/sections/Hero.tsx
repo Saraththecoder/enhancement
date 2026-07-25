@@ -95,44 +95,33 @@ export default function Hero() {
                   key={`text-${slide.id}-${idx}`}
                   initial={{ opacity: 0, x: -40 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <h1
-  className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-snug md:leading-tight mb-4"
-  style={{
-    fontFamily: 'Outfit, sans-serif',
-    color: '#FFFFFF',
-    textShadow: '0 0 12px rgba(255,255,255,0.35), 0 6px 30px rgba(0,0,0,0.95)'
-  }}
->
+                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4 text-white"
+                    style={{ fontFamily: 'Outfit, sans-serif' }}
+                  >
                     {slide.tagline}
                     <br />
-                    <span style={{ color: '#2EA4FF' }} className="drop-shadow-lg">{slide.highlight}</span>
+                    <span className="text-[#1473E6]">{slide.highlight}</span>
                   </h1>
 
-            <p
-  className="text-base md:text-lg font-medium leading-relaxed mb-6 md:mb-8 max-w-md"
-  style={{
-    color: '#FFFFFF',
-    textShadow: '0 2px 18px rgba(0,0,0,0.95)'
-  }}
->
+                  <p className="text-base md:text-lg font-medium leading-relaxed mb-8 max-w-md text-white/90">
                     {slide.sub}
                   </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-2">
                     <Link
                       to="/products"
-                      className="ripple-btn flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-blue-glow text-sm tracking-wide group"
+                      className="flex items-center justify-between gap-2 bg-[#1473E6] hover:bg-blue-600 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 text-sm tracking-wide shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                     >
-                      EXPLORE PRODUCTS
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      <span>EXPLORE PRODUCTS</span>
+                      <ArrowRight size={16} />
                     </Link>
                     <Link
                       to="/contact"
-                      className="flex items-center justify-center gap-2 border-2 border-white/30 hover:border-primary text-white hover:text-primary font-bold px-6 py-3 rounded-xl transition-all duration-300 text-sm tracking-wide"
+                      className="flex items-center justify-between gap-2 border border-white/20 hover:bg-white/10 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 text-sm tracking-wide"
                     >
-                      CONTACT US
+                      <span>CONTACT US</span>
                       <ArrowRight size={16} />
                     </Link>
                   </div>
@@ -145,7 +134,7 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.9, x: 40 }}
                 animate={{ opacity: 1, scale: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-                className="flex-1 max-w-sm md:max-w-xl lg:max-w-2xl w-full animate-float"
+                className="flex-1 max-w-sm md:max-w-xl lg:max-w-2xl w-full"
               >
                 <div className="relative">
                   {/* Glow behind image */}

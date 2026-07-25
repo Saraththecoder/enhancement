@@ -69,7 +69,7 @@ function SparePartCard({ part, index }: { part: typeof spareParts[0]; index: num
         <p className="text-slate-400 text-xs leading-relaxed mb-4">{part.desc}</p>
         <Link
           to="/quote"
-          className="inline-flex items-center gap-1.5 bg-primary hover:bg-blue-700 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-[0_0_12px_rgba(11,111,245,0.35)] w-full justify-center"
+          className="inline-flex items-center gap-1.5 bg-[#1473E6] hover:bg-blue-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5 w-full justify-center"
         >
           Send Inquiry →
         </Link>

@@ -79,7 +79,7 @@ export default function ProductDetail() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   to="/quote"
-                  className="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold py-3.5 rounded-xl hover:bg-primary-dark transition-colors text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 bg-[#1473E6] hover:bg-blue-600 text-white font-bold py-3.5 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm"
                 >
                   Request Quote
                 </Link>
@@ -87,13 +87,13 @@ export default function ProductDetail() {
                   href="https://wa.me/919440551559"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 rounded-xl hover:opacity-90 transition-opacity text-sm"
+                  className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white font-bold py-3.5 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm"
                 >
                   <MessageCircle size={16} /> WhatsApp
                 </a>
                 <a
                   href="tel:+919440551559"
-                  className="flex items-center justify-center gap-2 border border-slate-200 text-navy font-bold py-3.5 px-5 rounded-xl hover:border-primary hover:text-primary transition-colors text-sm"
+                  className="flex items-center justify-center gap-2 border border-slate-200 text-navy font-bold py-3.5 px-5 rounded-lg hover:border-[#1473E6] hover:text-[#1473E6] transition-all duration-300 text-sm"
                 >
                   <Phone size={16} /> Call
                 </a>

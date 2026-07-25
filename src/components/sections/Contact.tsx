@@ -105,7 +105,7 @@ export default function Contact() {
                       <input
                         name="name" required value={form.name} onChange={handleChange}
                         placeholder="Your Name"
-                        className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-primary transition-colors"
+                        className="w-full border border-slate-200 rounded-lg px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-[#1473E6] focus:ring-1 focus:ring-[#1473E6] transition-all"
                       />
                     </div>
                     <div>
@@ -113,7 +113,7 @@ export default function Contact() {
                       <input
                         name="phone" type="tel" value={form.phone} onChange={handleChange}
                         placeholder="Phone Number"
-                        className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-primary transition-colors"
+                        className="w-full border border-slate-200 rounded-lg px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-[#1473E6] focus:ring-1 focus:ring-[#1473E6] transition-all"
                       />
                     </div>
                   </div>
@@ -122,12 +122,12 @@ export default function Contact() {
                     <textarea
                       name="message" required value={form.message} onChange={handleChange}
                       rows={6} placeholder="Your Message"
-                      className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-primary transition-colors resize-none"
+                      className="w-full border border-slate-200 rounded-lg px-4 py-3 text-sm text-navy placeholder-slate-400 focus:outline-none focus:border-[#1473E6] focus:ring-1 focus:ring-[#1473E6] transition-all resize-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 rounded-xl transition-all duration-200 hover:shadow-blue-glow-sm text-sm tracking-wide"
+                    className="flex items-center justify-center gap-2 bg-[#1473E6] hover:bg-blue-600 text-white font-bold py-3.5 rounded-lg transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 text-sm tracking-wide"
                   >
                     <Send size={16} /> SEND MESSAGE
                   </button>

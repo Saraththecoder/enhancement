@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Loader from './components/effects/Loader';
-import CustomCursor from './components/effects/CustomCursor';
 import ScrollProgress from './components/effects/ScrollProgress';
 import FloatingButtons from './components/effects/FloatingButtons';
 import Navbar from './components/layout/Navbar';
@@ -75,7 +74,6 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <CustomCursor />
       <ScrollProgress />
       <FloatingButtons />
 

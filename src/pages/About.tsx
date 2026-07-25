@@ -48,9 +48,9 @@ export default function About() {
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, #0B6FF5 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="container-custom relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <img src={logoImg} alt="Sun Incubators" className="w-24 h-24 object-contain mx-auto mb-6 drop-shadow-[0_0_20px_rgba(11,111,245,0.6)]" />
+            <img src={logoImg} alt="Sun Incubators" className="w-24 h-24 object-contain mx-auto mb-6 drop-shadow-xl" />
             <h1 className="text-4xl md:text-6xl font-black text-white mb-4" style={{ fontFamily: 'Outfit, sans-serif' }}>
-              ABOUT <span className="text-primary">US</span>
+              ABOUT <span className="text-[#1473E6]">US</span>
             </h1>
             <p className="text-white/60 max-w-xl mx-auto text-sm md:text-base">
               20+ years of engineering trust. The story of Sun Engineering Works & Sun Incubators.
@@ -97,12 +97,12 @@ export default function About() {
                   className={`flex items-center gap-6 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   <div className={`flex-1 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="glass rounded-2xl p-5 border border-primary/15 hover:border-primary/30 transition-colors inline-block max-w-sm">
-                      <div className="text-primary font-black text-lg mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>{t.year}</div>
+                    <div className="glass rounded-2xl p-5 border border-white/10 hover:border-[#1473E6]/30 transition-colors inline-block max-w-sm shadow-md">
+                      <div className="text-[#1473E6] font-black text-lg mb-1" style={{ fontFamily: 'Outfit, sans-serif' }}>{t.year}</div>
                       <div className="text-white/70 text-sm">{t.event}</div>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-primary rounded-full shrink-0 shadow-blue-glow-sm hidden md:block" />
+                  <div className="w-4 h-4 bg-[#1473E6] rounded-full shrink-0 shadow-lg hidden md:block" />
                   <div className="flex-1 hidden md:block" />
                 </motion.div>
               ))}
@@ -127,9 +127,9 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="text-center p-6 rounded-2xl bg-light-gray border border-slate-100 hover:border-primary/20 hover:shadow-card-hover transition-all duration-300 group"
+                className="text-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-[#1473E6]/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mx-auto mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                <div className="w-12 h-12 bg-[#1473E6]/10 rounded-xl flex items-center justify-center text-[#1473E6] mx-auto mb-4 group-hover:bg-[#1473E6] group-hover:text-white transition-all duration-300">
                   {v.icon}
                 </div>
                 <h3 className="text-navy font-black text-sm mb-2">{v.title}</h3>

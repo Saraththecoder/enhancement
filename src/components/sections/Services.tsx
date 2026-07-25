@@ -48,19 +48,19 @@ export default function Services() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.15, duration: 0.6 }}
-              className="group bg-light-gray hover:bg-white border border-slate-100 hover:border-primary/20 rounded-2xl p-8 hover:shadow-card-hover transition-all duration-300 hover:-translate-y-2"
+              className="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-primary/20 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+              <div className="w-16 h-16 bg-[#1473E6]/10 rounded-2xl flex items-center justify-center text-[#1473E6] mb-6 group-hover:bg-[#1473E6] group-hover:text-white transition-all duration-300">
                 {s.icon}
               </div>
-              <h3 className="text-navy font-black text-lg mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
+              <h3 className="text-navy font-black text-xl mb-3" style={{ fontFamily: 'Outfit, sans-serif' }}>
                 {s.title}
               </h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-5">{s.desc}</p>
-              <ul className="flex flex-col gap-2">
+              <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-5">{s.desc}</p>
+              <ul className="flex flex-col gap-3">
                 {s.points.map(p => (
-                  <li key={p} className="flex items-center gap-2 text-xs text-slate-600">
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full shrink-0" />
+                  <li key={p} className="flex items-center gap-2 text-sm text-slate-600">
+                    <span className="w-1.5 h-1.5 bg-[#1473E6] rounded-full shrink-0" />
                     {p}
                   </li>
                 ))}

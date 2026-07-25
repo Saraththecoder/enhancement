@@ -45,27 +45,27 @@ export default function Testimonials() {
           >
             {testimonials.map(t => (
               <SwiperSlide key={t.id}>
-                <div className="glass rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div className="glass rounded-2xl p-8 border border-white/10 h-full flex flex-col">
                   {/* Stars */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-6">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} size={14} className="fill-yellow-400 text-yellow-400" />
+                      <Star key={i} size={16} className="fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
 
                   {/* Quote */}
-                  <p className="text-white/70 text-sm leading-relaxed flex-1 mb-6">
+                  <p className="text-white/80 text-base leading-relaxed flex-1 mb-8 italic">
                     "{t.text}"
                   </p>
 
                   {/* Customer */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary font-black text-sm">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-[#1473E6]/20 border border-[#1473E6]/40 flex items-center justify-center text-[#1473E6] font-black text-sm">
                       {t.initials}
                     </div>
                     <div>
-                      <div className="text-white font-bold text-sm">{t.name}</div>
-                      <div className="text-white/40 text-xs">{t.business} · {t.location}</div>
+                      <div className="text-white font-bold text-sm tracking-wide">{t.name}</div>
+                      <div className="text-white/50 text-xs mt-0.5">{t.business} · {t.location}</div>
                     </div>
                   </div>
                 </div>

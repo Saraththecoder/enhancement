@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Phone, ChevronDown, Menu, X, Send, Home, Package, Wrench, HelpCircle, PhoneCall } from 'lucide-react';
+import { Phone, ChevronDown, Menu, X, Send, Home, Package, Wrench, HelpCircle, PhoneCall, FileText } from 'lucide-react';
 import logoImg from '../../assets/logo.jpg';
 
 const navLinks = [
@@ -27,13 +27,6 @@ const navLinks = [
   { label: 'Contact Us', path: '/contact' },
 ];
 
-const mobileNavLinks = [
-  { label: 'Home', path: '/', icon: <Home size={18} /> },
-  { label: 'Products', path: '/products', icon: <Package size={18} /> },
-  { label: 'Services', path: '/services', icon: <Wrench size={18} /> },
-  { label: 'Why Choose Us', path: '/why-choose-us', icon: <HelpCircle size={18} /> },
-  { label: 'Contact', path: '/contact', icon: <PhoneCall size={18} /> },
-];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -179,27 +172,27 @@ export default function Navbar() {
       >
         {/* Top action bar */}
         <div
-          className="flex items-center justify-between px-4 py-2"
-          style={{ borderBottom: '1px solid rgba(11,111,245,0.2)' }}
+          className="flex items-center justify-between px-4 py-3"
+          style={{ background: '#051b3d' }}
         >
           <a
             href="tel:+919440551559"
-            className="flex items-center gap-2 rounded-xl px-3 py-2"
-            style={{ background: 'rgba(11,111,245,0.1)', border: '1px solid rgba(11,111,245,0.25)' }}
+            className="flex items-center gap-2.5"
           >
-            <div className="w-7 h-7 bg-primary rounded-lg flex items-center justify-center">
-              <Phone size={13} className="text-white" />
+            <div className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: 'rgba(255,255,255,0.1)' }}>
+              <Phone size={16} className="text-[#2EA4FF]" />
             </div>
             <div className="flex flex-col leading-tight">
-              <span className="text-[9px] text-white/50 font-medium">Call Us Now</span>
-              <span className="text-xs font-black text-white">9440551559</span>
+              <span className="text-[10px] text-white/70 font-medium tracking-wide">Call Us Now</span>
+              <span className="text-sm font-black text-white tracking-wide">9440551559</span>
             </div>
           </a>
           <Link
             to="/quote"
-            className="flex items-center gap-1.5 bg-primary text-white px-4 py-2 rounded-xl text-xs font-black tracking-wide"
+            className="flex items-center gap-1.5 text-white px-4 py-2 rounded text-[11px] font-black tracking-wide shadow-md"
+            style={{ background: '#1473E6' }}
           >
-            GET A QUOTE <Send size={11} />
+            GET A QUOTE <FileText size={14} />
           </Link>
         </div>
 
@@ -272,25 +265,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </motion.header>
-
-      {/* ── MOBILE BOTTOM NAV ──────────────────────────────── */}
-      <nav className="mobile-bottom-nav md:hidden">
-        {mobileNavLinks.map(link => (
-          <NavLink
-            key={link.path}
-            to={link.path}
-            end={link.path === '/'}
-            className={({ isActive }) =>
-              `flex flex-col items-center gap-0.5 px-2 py-1 text-[10px] font-semibold transition-colors ${
-                isActive ? 'text-primary' : 'text-white/50 hover:text-white'
-              }`
-            }
-          >
-            <span className="leading-none">{link.icon}</span>
-            <span className="leading-none">{link.label.length > 8 ? link.label.slice(0, 7) + '…' : link.label}</span>
-          </NavLink>
-        ))}
-      </nav>
     </>
   );
 }
