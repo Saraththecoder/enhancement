@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -62,6 +62,22 @@ export default function Hero() {
         style={{ background: '#1473E6' }}
       />
 
+      {/* Nav arrows */}
+      <button
+        ref={prevRef}
+        className="hidden md:flex absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        ref={nextRef}
+        className="hidden md:flex absolute right-4 lg:left-auto lg:right-8 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/30 border border-white/20 backdrop-blur-md items-center justify-center text-white hover:bg-[#1473E6] transition-all duration-200"
+        aria-label="Next slide"
+      >
+        <ChevronRight size={20} />
+      </button>
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
@@ -80,12 +96,9 @@ export default function Hero() {
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={slide.id}>
-            <div
-              className="w-full flex items-center"
-              style={{ paddingTop: '96px', minHeight: '520px' }}
-            >
+            <div className="w-full flex items-center min-h-[360px] sm:min-h-[460px] md:min-h-[560px] pt-[76px] sm:pt-[96px]">
               <div className="container-custom w-full">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 py-8 md:py-12">
+                <div className="flex flex-row items-center justify-between gap-4 md:gap-10 py-6 md:py-12">
 
                   {/* ── LEFT: Text ── */}
                   <motion.div
@@ -93,13 +106,13 @@ export default function Hero() {
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex-1 max-w-lg text-left z-10"
+                    className="flex-[1.4] md:flex-[1.2] max-w-lg text-left z-10 min-w-0"
                   >
                     <h1
-                      className="font-black leading-[1.1] text-white mb-4"
+                      className="font-black leading-[1.1] text-white"
                       style={{
                         fontFamily: 'Outfit, sans-serif',
-                        fontSize: 'clamp(1.75rem, 5vw, 3.25rem)',
+                        fontSize: 'clamp(1.1rem, 3.8vw, 3.25rem)',
                       }}
                     >
                       {slide.tagline}
@@ -109,46 +122,34 @@ export default function Hero() {
                       <span style={{ color: '#1473E6' }}>{slide.highlight}</span>
                     </h1>
 
+                    {/* Blue line separator under tagline */}
+                    <div className="w-8 sm:w-12 h-[3px] bg-[#1473E6] my-2.5 sm:my-4 rounded-full" />
+
                     <p
-                      className="mb-8 leading-relaxed"
+                      className="mb-4 sm:mb-6 md:mb-8 leading-relaxed text-slate-300 font-normal"
                       style={{
-                        color: 'rgba(255,255,255,0.80)',
-                        fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                        fontSize: 'clamp(0.68rem, 1.8vw, 1rem)',
                         maxWidth: '420px',
                       }}
                     >
                       {slide.sub}
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                       <Link
                         to="/products"
-                        className="flex items-center justify-between gap-3 font-bold tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5"
-                        style={{
-                          background: '#1473E6',
-                          color: '#fff',
-                          padding: '13px 24px',
-                          fontSize: '0.75rem',
-                          boxShadow: '0 4px 20px rgba(20,115,230,0.45)',
-                        }}
+                        className="flex items-center justify-between gap-2 font-bold tracking-wider rounded-lg transition-all duration-300 hover:-translate-y-0.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-[9px] sm:text-[11px] md:text-[12px] bg-[#1473E6] text-white shadow-[0_4px_20px_rgba(20,115,230,0.45)]"
                       >
                         <span>EXPLORE PRODUCTS</span>
-                        <ArrowRight size={15} />
+                        <ArrowRight size={13} />
                       </Link>
 
                       <Link
                         to="/contact"
-                        className="flex items-center justify-between gap-3 font-bold tracking-wider rounded-lg transition-all duration-300 hover:bg-white/10"
-                        style={{
-                          background: 'transparent',
-                          color: '#fff',
-                          border: '1.5px solid rgba(255,255,255,0.30)',
-                          padding: '13px 24px',
-                          fontSize: '0.75rem',
-                        }}
+                        className="flex items-center justify-between gap-2 font-bold tracking-wider rounded-lg transition-all duration-300 hover:bg-white/10 px-3 py-2.5 sm:px-6 sm:py-3.5 text-[9px] sm:text-[11px] md:text-[12px] bg-transparent text-white border border-white/30"
                       >
                         <span>CONTACT US</span>
-                        <ArrowRight size={15} />
+                        <ArrowRight size={13} />
                       </Link>
                     </div>
                   </motion.div>
@@ -159,7 +160,7 @@ export default function Hero() {
                     initial={{ opacity: 0, x: 40, scale: 0.96 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                    className="flex-1 flex items-center justify-center md:justify-end z-10 w-full"
+                    className="flex-[1] md:flex-[1] flex items-center justify-end z-10 w-full min-w-0"
                     style={{ maxWidth: '520px' }}
                   >
                     {/* Radial glow behind image */}
@@ -176,7 +177,7 @@ export default function Hero() {
                         alt={slide.tagline}
                         className="relative w-full h-auto object-contain"
                         style={{
-                          maxHeight: '420px',
+                          maxHeight: 'clamp(160px, 35vw, 420px)',
                           mixBlendMode: 'lighten',
                           filter: 'brightness(1.05) contrast(1.05)',
                         }}
